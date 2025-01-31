@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/study
+        username: lsr
+        password: 010729lsr
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    
+    security:
+        user:
+            name: admin
+            password: 123456
+            roles:
+                - ADMIN
+                - USER
+springdoc:
+  api-docs:
+    enabled: true

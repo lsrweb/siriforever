@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: "@environment@"
+  # 配置模版引擎
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    content-type: text/html
+    mode: HTML5
+    cache: false
+    check-template-location: true
+
+# 基础访问路径
+server:
+  servlet:
+    context-path: /api
+
+mybatis:
+    # 搜索指定包别名
+    #typeAliasesPackage: com.wr.api.business.entity
+    typeAliasesPackage: com.**.domain
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件
+    mapperLocations: classpath*:mappers/**/*Mapper.xml
+    # 加载全局的配置文件
+    configLocation: classpath:mybatis/mybatis-config.xml
+
+logging:
+  charset:
+    console: GBK
+
+
