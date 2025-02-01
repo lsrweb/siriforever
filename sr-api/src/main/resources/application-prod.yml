@@ -3,10 +3,11 @@ server:
 spring:
     datasource:
         url: jdbc:mysql://localhost:3306/study
+        # username: super
         username: lsr
+        # password: luBFobc5JkgOgxKx
         password: 010729lsr
         driver-class-name: com.mysql.cj.jdbc.Driver
-    
     security:
         user:
             name: admin
@@ -16,4 +17,4 @@ spring:
                 - USER
 springdoc:
   api-docs:
-    enabled: true
+    enabled: false

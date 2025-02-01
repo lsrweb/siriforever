@@ -17,7 +17,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     }
 
     @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
+    public void configurePathMatch(@SuppressWarnings("null") PathMatchConfigurer configurer) {
         configurer
                 .addPathPrefix("/api", c -> c.isAnnotationPresent(ApiRestController.class));
     }

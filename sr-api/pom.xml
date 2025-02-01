@@ -18,8 +18,6 @@
     </properties>
 
     <dependencies>
-
-
         <!-- 引入common模块 -->
         <dependency>
             <groupId>orm.sififorever</groupId>
@@ -39,6 +37,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
 
         <!-- Spring Boot DevTools -->
         <dependency>

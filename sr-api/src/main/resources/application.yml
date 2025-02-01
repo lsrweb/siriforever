@@ -1,20 +1,14 @@
 spring:
   profiles:
     active: "@environment@"
-  # 配置模版引擎
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    encoding: UTF-8
-    content-type: text/html
-    mode: HTML5
-    cache: false
-    check-template-location: true
+
   devtools:
     restart:
       enabled: true
+
   mvc:
      static-path-pattern: /static/**
+     
   web:
     resources:
       static-locations:
