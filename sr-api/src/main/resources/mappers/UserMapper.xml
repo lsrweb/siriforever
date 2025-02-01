@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://demo.zmycode.top/mybatis-3-mapper.dtd">
+<mapper namespace="orm.sififorever.mapper.AccountMapper">
+
+    <!--    查询所有用户-->
+    <select id="selectAllUser" resultType="map">
+        select * from user
+    </select>
+
+
+</mapper>
+

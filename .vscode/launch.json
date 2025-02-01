@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MainAppSpringApplication<sr-api>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "orm.sififorever.MainAppSpringApplication",
+            "projectName": "sr-api",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

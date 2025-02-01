@@ -1,6 +1,7 @@
 package orm.sififorever.controller;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,11 +14,11 @@ import jakarta.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "邮箱接口", description = "MailSend 邮箱")
 @Validated
-@Controller
-@ResponseBody
+@RestController
 public class MailSend {
 
     @Resource
