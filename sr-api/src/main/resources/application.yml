@@ -10,23 +10,38 @@ spring:
     mode: HTML5
     cache: false
     check-template-location: true
+  devtools:
+    restart:
+      enabled: true
+  mvc:
+     static-path-pattern: /static/**
+  web:
+    resources:
+      static-locations:
+        - classpath:/static/
+        - classpath:/META-INF/resources/
+        - classpath:/resources/
+        - classpath:/public/
+      add-mappings: true
+      
 
 # 基础访问路径
-server:
-  servlet:
-    context-path: /api
+# server:
+#   servlet:
+#     # 排除静态资源
+#     context-path: /api
 
 mybatis:
     # 搜索指定包别名
     #typeAliasesPackage: com.wr.api.business.entity
-    typeAliasesPackage: com.**.domain
+    # typeAliasesPackage: com.**.domain
     # 配置mapper的扫描，找到所有的mapper.xml映射文件
     mapperLocations: classpath*:mappers/**/*Mapper.xml
     # 加载全局的配置文件
     configLocation: classpath:mybatis/mybatis-config.xml
 
 logging:
-  charset:
+  charset:  
     console: GBK
 
 
