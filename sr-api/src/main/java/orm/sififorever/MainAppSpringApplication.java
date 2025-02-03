@@ -2,8 +2,14 @@ package orm.sififorever;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 
 @SpringBootApplication
+@ComponentScans({
+        @ComponentScan("orm.sififorever"),
+        @ComponentScan("com.siriforever.common")
+})
 public class MainAppSpringApplication {
 
     public static void main(String[] args) {

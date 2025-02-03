@@ -8,6 +8,7 @@ spring:
 
   mvc:
     static-path-pattern: /static/**
+      
   
   web:
     resources:
@@ -17,14 +18,6 @@ spring:
         - classpath:/resources/
         - classpath:/public/
       add-mappings: true
-
-hikari:
-  minimum-idle: 3  # 最小空闲连接数量
-  maximum-pool-size: 5  # 连接池最大连接数，默认是10
-  max-lifetime: 1800000  # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-  connection-test-query: SELECT 1
-
-
 
 # 基础访问路径
 # server:
