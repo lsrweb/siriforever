@@ -3,6 +3,7 @@ package com.siriforever.common.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -54,4 +55,38 @@ public class GlobalExceptionHandler {
                                 "System");
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
+
+        // HttpRequestMethodNotSupportedException
+        @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+        public ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(
+                        HttpRequestMethodNotSupportedException ex) {
+                log.error("请求方法不支持: ", ex);
+                ErrorResponse response = new ErrorResponse(
+                                "METHOD_NOT_SUPPORTED",
+                                "请求方法不支持",
+                                "System");
+                return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(response);
+        }
+
+        // 自定义异常处理
+        @ExceptionHandler(NullPointerException.class)
+        public ResponseEntity<ErrorResponse> handleNullPointerException(NullPointerException ex) {
+                log.error("空指针异常: ", ex);
+                ErrorResponse response = new ErrorResponse(
+                                "NULL_POINTER",
+                                "空指针异常",
+                                "System");
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+
+        @ExceptionHandler(IllegalArgumentException.class)
+        public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException ex) {
+                log.error("非法参数异常: ", ex);
+                ErrorResponse response = new ErrorResponse(
+                                "ILLEGAL_ARGUMENT",
+                                "非法参数异常",
+                                "System");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
 }
