@@ -8,26 +8,37 @@ import lombok.Data;
 
 @Data
 public class AjaxResult<T> {
-    /** 状态码 **/
+
+
+    /**
+     * 状态码
+     **/
     private Integer code;
 
-    /** 提示信息 **/
+    /**
+     * 提示信息
+     **/
     private String msg;
 
-    /** 响应数据 **/
+    /**
+     * 响应数据
+     **/
     private T data;
 
-    /** 是否显示错误信息 **/
+    /**
+     * 是否显示错误信息
+     **/
     private Integer show;
 
-    /** 无参构造 **/
+    /**
+     * 无参构造
+     **/
     protected AjaxResult() {
     }
 
     /**
      * 带参构造
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @param data 响应数据
@@ -42,7 +53,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @return AjaxResult
      */
     public static AjaxResult<Object> success() {
@@ -53,7 +63,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param code 状态码
      * @return AjaxResult
      */
@@ -64,7 +73,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param msg 提示信息
      * @return AjaxResult
      */
@@ -75,7 +83,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param msg 提示信息
      * @return AjaxResult
      */
@@ -86,7 +93,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param data 响应数据
      * @return AjaxResult
      */
@@ -98,7 +104,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @return AjaxResult
@@ -110,7 +115,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @return AjaxResult
@@ -126,7 +130,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param msg  提示信息
      * @param data 响应数据
      * @return AjaxResult
@@ -138,7 +141,6 @@ public class AjaxResult<T> {
     /**
      * 成功返回结果
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @param data 响应数据
@@ -151,7 +153,6 @@ public class AjaxResult<T> {
     /**
      * 响应失败结果
      *
-     * 
      * @param code 状态码
      * @return AjaxResult
      */
@@ -162,7 +163,6 @@ public class AjaxResult<T> {
     /**
      * 响应失败结果
      *
-     * 
      * @param msg 提示信息
      * @return AjaxResult
      */
@@ -173,7 +173,6 @@ public class AjaxResult<T> {
     /**
      * 响应失败结果
      *
-     * 
      * @param data 响应数据
      * @return AjaxResult
      */
@@ -185,7 +184,6 @@ public class AjaxResult<T> {
     /**
      * 响应失败结果
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @return AjaxResult
@@ -197,7 +195,6 @@ public class AjaxResult<T> {
     /**
      * 响应失败结果
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @param data 响应数据
@@ -210,7 +207,6 @@ public class AjaxResult<T> {
     /**
      * 响应失败结果
      *
-     * 
      * @param code 状态码
      * @param msg  提示信息
      * @param data 响应数据

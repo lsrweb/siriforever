@@ -4,11 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SpringBootLearn</title>
+    <meta name="description" content="SpringBootLearn">
+    <meta name="keywords" content="SpringBootLearn">
+    <meta name="author" content="SpringBootLearn">
+    <link rel="icon" href="static/zgn.png" type="image/x-icon">
+    <!-- vue cdn 3.x 最新版 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.0/dist/vue.global.prod.js"></script>
 </head>
 
 <body>
-    index123123
+    <div id="app">
+        <h1 :style="{color: color}">{{ message }}
+        </h1>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: '发现敌方坦克!去炸了他!!!!!!!',
+                    color: '#000'
+                }
+            },
+            mounted() {
+                // 文字循环自动变色, 生成器函数,生成随机颜色
+                function* colorGenerator() {
+                    while (true) {
+                        yield '#' + Math.random().toString(16).slice(2, 8)
+                    }
+                }
+                const gen = colorGenerator()
+
+                setInterval(() => {
+                    this.color = gen.next().value
+                }, 1000)
+
+
+
+            }
+        })
+        app.mount('#app')
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            background-image: url("static/s2_pic1.png");
+            background-size: cover;
+
+        }
+
+        #app {
+            text-align: center;
+        }
+    </style>
+
 </body>
 
 </html>
