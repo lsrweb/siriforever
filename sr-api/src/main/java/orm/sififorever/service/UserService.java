@@ -2,6 +2,7 @@ package orm.sififorever.service;
 
 import org.springframework.stereotype.Service;
 import orm.sififorever.entity.UserEntity;
+import java.util.List;
 
 @Service
 public interface UserService {
@@ -25,4 +26,7 @@ public interface UserService {
 
     // 修改密码
     void changePassword(Long userId, String oldPassword, String newPassword);
+
+    // 查询所有用户
+    List<UserEntity> findAllUsers();
 }

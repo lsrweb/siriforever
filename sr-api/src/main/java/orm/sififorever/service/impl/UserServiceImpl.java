@@ -11,6 +11,7 @@ import orm.sififorever.service.UserService;
 import orm.sififorever.exception.UserException;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -93,5 +94,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(newPassword));
         user.setUpdatedAt(new Date());
         userRepository.save(user);
+    }
+
+    @Override
+    public List<UserEntity> findAllUsers() {
+        return userRepository.findAll();
     }
 }
