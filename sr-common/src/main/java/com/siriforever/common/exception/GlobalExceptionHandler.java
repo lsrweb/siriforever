@@ -7,6 +7,8 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.NoHandlerFoundException;
+
 import lombok.extern.slf4j.Slf4j;
 import java.util.stream.Collectors;
 
@@ -87,6 +89,17 @@ public class GlobalExceptionHandler {
                                 "非法参数异常",
                                 "System");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+
+        // NoHandlerFoundExceptio
+        @ExceptionHandler(NoHandlerFoundException.class)
+        public ResponseEntity<ErrorResponse> handleNoHandlerFoundException(NoHandlerFoundException ex) {
+                log.error("请求路径不存在: ", ex);
+                ErrorResponse response = new ErrorResponse(
+                                "NOT_FOUND",
+                                "请求路径不存在",
+                                "Runtime");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
 
 }
