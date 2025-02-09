@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 public class AjaxResult<T> {
 
-
     /**
      * 状态码
      **/
