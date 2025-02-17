@@ -1,16 +1,14 @@
 package orm.sififorever.framework.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.siriforever.common.annotaion.ApiRestController;
+import com.siriforever.common.config.GlobalConfig;
 import com.siriforever.common.core.AjaxResult;
 import com.siriforever.common.utils.file.FileTypeUtils;
+import com.siriforever.common.utils.file.FileUploadUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -24,11 +22,19 @@ public class FileUploadController {
     private static final Set<String> ALLOWED_EXTENSIONS = new HashSet<>(Arrays.asList(
             "pdf", "xlsx", "md", "docx", "doc", "txt"));
 
+    @Autowired
+    private GlobalConfig globalConfig;
+
+    @Autowired
+    private FileUploadUtils fileUploadUtils;
+
     @PostMapping("/upload")
     public AjaxResult<Object> uploadFile(@RequestParam(value = "file", required = false) MultipartFile file) {
         if (file == null || file.isEmpty()) {
             return AjaxResult.failed("请选择要上传的文件");
         }
+        String projectRoot = System.getProperty("user.dir");
+        System.out.println("Project root: " + projectRoot);
 
         String fileName = file.getOriginalFilename();
 
@@ -38,10 +44,15 @@ public class FileUploadController {
 
         try {
             // 处理文件上传逻辑
+            String uploadFileName = fileUploadUtils.upload(file);
+            String fileUrl = fileUploadUtils.getFileUrl(uploadFileName);
             System.out.println("上传文件: " + fileName);
+            System.out.println("Upload path: " + globalConfig.getUpload());
+            System.out.println("保存的文件名: " + uploadFileName);
+            System.out.println("文件访问 URL: " + fileUrl);
 
-            return AjaxResult.success("文件上传成功");
-        } catch (Exception e) {
+            return AjaxResult.success("文件上传成功", fileUrl);
+        } catch (IOException e) {
             e.printStackTrace();
             return AjaxResult.failed("文件上传失败");
         }
@@ -69,8 +80,13 @@ public class FileUploadController {
                 // 在这里处理文件上传逻辑，例如保存到服务器或云存储
                 // file.getBytes() 获取文件内容
                 // 可以使用 file.transferTo(new File("path/to/save/" + fileName)); 保存文件
+                String uploadFileName = fileUploadUtils.upload(file);
+                String fileUrl = fileUploadUtils.getFileUrl(uploadFileName);
                 System.out.println("上传文件: " + fileName);
-            } catch (Exception e) {
+                System.out.println("Upload path: " + globalConfig.getUpload());
+                System.out.println("保存的文件名: " + uploadFileName);
+                System.out.println("文件访问 URL: " + fileUrl);
+            } catch (IOException e) {
                 e.printStackTrace();
                 return AjaxResult.failed("文件上传失败");
             }
