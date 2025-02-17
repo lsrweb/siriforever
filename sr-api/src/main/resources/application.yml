@@ -18,6 +18,15 @@ spring:
         - classpath:/resources/
         - classpath:/public/
       add-mappings: true
+  # 文件上传
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 0
+      # 文件上传路径 /static/upload
+      location: classpath:/static/upload
+    
+    
 
 # 基础访问路径
 # server:
@@ -39,3 +48,8 @@ logging:
     console: GBK
 
 
+
+# 自定义全局配置
+# 图片上传路径
+file:
+  upload: classpath:/static/upload/

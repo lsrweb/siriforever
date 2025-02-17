@@ -8,7 +8,8 @@ import org.springframework.context.annotation.ComponentScans;
 @SpringBootApplication
 @ComponentScans({
         @ComponentScan("orm.sififorever"),
-        @ComponentScan("com.siriforever.common")
+        @ComponentScan("com.siriforever.common"),
+        @ComponentScan("com.siriforever.framework")
 })
 public class MainAppSpringApplication {
 

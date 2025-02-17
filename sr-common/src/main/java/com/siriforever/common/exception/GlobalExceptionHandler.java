@@ -7,6 +7,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -102,4 +103,10 @@ public class GlobalExceptionHandler {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
 
+        // @ExceptionHandler(MultipartException.class)
+        // public ResponseEntity<String> handleMultipartException(MultipartException e)
+        // {
+        // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("请确保请求是
+        // multipart/form-data 类型，并且包含了文件");
+        // }
 }

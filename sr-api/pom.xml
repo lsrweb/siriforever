@@ -23,6 +23,10 @@
             <groupId>orm.sififorever</groupId>
             <artifactId>sr-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>orm.sififorever</groupId>
+            <artifactId>sr-aichat</artifactId>
+        </dependency>
 
         <!-- Spring Boot -->
         <dependency>
