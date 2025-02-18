@@ -100,11 +100,7 @@
                 <version>2.1.0-alpha1</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.ai</groupId>
-                <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-                <version>1.0.0-M6</version>
-            </dependency>
+
         </dependencies>
 
 
@@ -207,5 +203,18 @@
 
         </resources>
     </build>
+
+
+    <repositories>
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
 
 </project>

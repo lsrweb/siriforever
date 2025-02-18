@@ -26,7 +26,6 @@ spring:
       file-size-threshold: 0
       # 移除location配置，避免影响文件上传路径
       # location: ${user.dir}/sr-api/static/upload
-    
 
 # 基础访问路径
 # server:
@@ -63,3 +62,6 @@ file:
   # 服务器端口
   port: 8080
 
+
+ollama:
+  base-url: http://localhost:11434
