@@ -33,8 +33,6 @@ public class FileUploadController {
         if (file == null || file.isEmpty()) {
             return AjaxResult.failed("请选择要上传的文件");
         }
-        String projectRoot = System.getProperty("user.dir");
-        System.out.println("Project root: " + projectRoot);
 
         String fileName = file.getOriginalFilename();
 
@@ -43,18 +41,20 @@ public class FileUploadController {
         }
 
         try {
-            // 处理文件上传逻辑
-            String uploadFileName = fileUploadUtils.upload(file);
+            // 生成新文件名
+            String newFileName = fileUploadUtils.generateNewFileName(fileName);
+            // 生成以日期分割的文件路径
+            String datePath = fileUploadUtils.generateDatePath();
+            // 上传文件
+            String uploadFileName = fileUploadUtils.upload(datePath, file);
             String fileUrl = fileUploadUtils.getFileUrl(uploadFileName);
-            System.out.println("上传文件: " + fileName);
-            System.out.println("Upload path: " + globalConfig.getUpload());
-            System.out.println("保存的文件名: " + uploadFileName);
-            System.out.println("文件访问 URL: " + fileUrl);
 
-            return AjaxResult.success("文件上传成功", fileUrl);
+            return AjaxResult.success("文件上传成功")
+                    .put("url", fileUrl)
+                    .put("fileName", uploadFileName);
         } catch (IOException e) {
             e.printStackTrace();
-            return AjaxResult.failed("文件上传失败");
+            return AjaxResult.failed("文件上传失败：" + e.getMessage());
         }
     }
 
@@ -71,17 +71,19 @@ public class FileUploadController {
 
             String fileName = file.getOriginalFilename();
 
-            if (!ALLOWED_EXTENSIONS.contains(
-                    FileTypeUtils.getFileType(fileName))) {
+            if (!ALLOWED_EXTENSIONS.contains(FileTypeUtils.getFileType(fileName))) {
                 return AjaxResult.failed("不支持的文件类型，只允许上传 pdf, xlsx, md, docx, doc, txt 文件");
             }
 
             try {
-                // 在这里处理文件上传逻辑，例如保存到服务器或云存储
-                // file.getBytes() 获取文件内容
-                // 可以使用 file.transferTo(new File("path/to/save/" + fileName)); 保存文件
-                String uploadFileName = fileUploadUtils.upload(file);
+                // 生成新文件名
+                String newFileName = fileUploadUtils.generateNewFileName(fileName);
+                // 生成以日期分割的文件路径
+                String datePath = fileUploadUtils.generateDatePath();
+                // 上传文件
+                String uploadFileName = fileUploadUtils.upload(datePath, file);
                 String fileUrl = fileUploadUtils.getFileUrl(uploadFileName);
+
                 System.out.println("上传文件: " + fileName);
                 System.out.println("Upload path: " + globalConfig.getUpload());
                 System.out.println("保存的文件名: " + uploadFileName);

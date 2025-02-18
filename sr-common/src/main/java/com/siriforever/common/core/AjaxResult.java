@@ -1,6 +1,8 @@
 package com.siriforever.common.core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.siriforever.common.enums.ErrorEnums;
 
@@ -30,9 +32,15 @@ public class AjaxResult<T> {
     private Integer show;
 
     /**
+     * 附加数据
+     */
+    private Map<String, Object> extra;
+
+    /**
      * 无参构造
      **/
     protected AjaxResult() {
+        this.extra = new HashMap<>();
     }
 
     /**
@@ -47,6 +55,19 @@ public class AjaxResult<T> {
         this.msg = msg;
         this.data = data;
         this.show = show;
+        this.extra = new HashMap<>();
+    }
+
+    /**
+     * 添加附加数据
+     * 
+     * @param key   键
+     * @param value 值
+     * @return this
+     */
+    public AjaxResult<T> put(String key, Object value) {
+        this.extra.put(key, value);
+        return this;
     }
 
     /**

@@ -22,17 +22,31 @@ public class FileTypeUtils {
         return false;
     }
 
-    // getBaseName 获取文件名
+    /**
+     * 获取文件名（不含后缀）
+     */
     public static String getBaseName(String fileName) {
+        if (fileName == null) {
+            return null;
+        }
         int dotIndex = fileName.lastIndexOf('.');
-        return (dotIndex == -1 ? fileName : fileName.substring(0, dotIndex));
+        return (dotIndex == -1) ? fileName : fileName.substring(0, dotIndex);
     }
 
-    // 获取文件后缀
+    /**
+     * 获取文件后缀
+     */
     public static String getExtension(MultipartFile file) {
         String fileName = file.getOriginalFilename();
+        if (fileName == null) {
+            return "";
+        }
+        String extension = "";
         int dotIndex = fileName.lastIndexOf('.');
-        return (dotIndex == -1 ? "" : fileName.substring(dotIndex + 1));
+        if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
+            extension = fileName.substring(dotIndex + 1).toLowerCase();
+        }
+        return extension;
     }
 
 }

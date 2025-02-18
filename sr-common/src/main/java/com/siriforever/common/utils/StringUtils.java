@@ -496,4 +496,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         }
         return sb.toString();
     }
+
+    // 去除字符串中的空格、回车、换行符、制表符
+    public static String replaceBlank(String str) {
+        String dest = "";
+        if (str != null) {
+            dest = str.replaceAll("\\s*", "");
+        }
+        return dest;
+    }
 }

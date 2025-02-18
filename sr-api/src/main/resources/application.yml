@@ -6,17 +6,17 @@ spring:
     restart:
       enabled: true
 
-  mvc:
-    static-path-pattern: /static/**
+  # mvc:
+    # static-path-pattern: 
       
   web:
     resources:
-      static-locations:
-        - classpath:/static/
-        - classpath:/META-INF/resources/
-        - classpath:/resources/
-        - classpath:/public/
-        - file:./static/  # 添加这一行
+      # static-locations:
+      #   - classpath:/static/
+      #   - classpath:/META-INF/resources/
+      #   - classpath:/resources/
+      #   - classpath:/public/
+      #   - file:./static/  # 添加这一行
       add-mappings: true
 
   # 文件上传
@@ -24,9 +24,8 @@ spring:
     multipart:
       enabled: true
       file-size-threshold: 0
-      # 文件上传路径 /static/upload
-      location: classpath:/static/upload
-    
+      # 移除location配置，避免影响文件上传路径
+      # location: ${user.dir}/sr-api/static/upload
     
 
 # 基础访问路径
@@ -51,8 +50,8 @@ logging:
 # 自定义全局配置
 # 图片上传路径
 file:
-  # 默认上传文件保存路径,默认放在当前项目模块下static目录下
-  upload: /static/upload/
+  # 默认上传文件保存路径改为相对路径
+  upload: static/upload
   # 上传文件临时目录
   temp: /static/temp/
   # 上传文件大小限制
